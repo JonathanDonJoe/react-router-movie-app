@@ -6,9 +6,13 @@ import Home from './components/Home'
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Route exact path='/' component={Home} />
-     </Router>
+      <div className='container'>
+        <div className='row'>
+          <Router>
+            <Route exact path='/' component={Home} />
+          </Router>
+        </div>
+      </div>
     );
   }
 }

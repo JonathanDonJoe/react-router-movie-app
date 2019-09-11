@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import config from '../config'
 import axios from 'axios'
+import Movie from './Movie'
 
 class Home extends Component {
     constructor() {
         super();
         this.state = {
-            movieList: {}
+            movieList: []
         }
     }
 
@@ -24,8 +25,15 @@ class Home extends Component {
 
 
     render() { 
+
+        const movies = this.state.movieList.map( (movie, i) => 
+            <Movie key={i} keys={i} movie={movie} />
+            )
+
         return (
-            <h1>Home Page</h1>
+            <div className='col s12'>
+                {movies}
+            </div>
         );
     }
 }
