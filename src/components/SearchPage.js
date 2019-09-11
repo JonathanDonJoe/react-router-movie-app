@@ -16,7 +16,7 @@ class SearchPage extends Component {
     componentDidMount() {
         const searchTerm = this.props.match.params.searchTerm;
         console.log(searchTerm)
-        const searchUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${config.api_key}`
+        const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${config.api_key}&query=${searchTerm}`
         axios.get(searchUrl)
             .then( (resp) => {
                 const movieResults = resp.data.results;
