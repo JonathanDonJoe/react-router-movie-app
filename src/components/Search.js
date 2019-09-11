@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 
 class Search extends Component {
-    constructor() {
-        super();
-        this.state = {
-            searching: ''
-        }
-    }
-
-    // changeSearch = (e) => {
-    //     console.log(e.target.value);
-    //     this.setState({
-    //         searching: e.target.value
-    //     })
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         searching: ''
+    //     }
     // }
 
+
+    
     render() { 
-        console.log(this.state.searching);
 
         return ( 
-            <input type='text' onChange={this.props.changeFromParent} value={this.props.searching} placeholder='Search' />
+            <div>
+                <form onSubmit={this.props.searchFromParent}>
+                    <input type='text' onChange={this.props.changeFromParent} value={this.props.searching} placeholder='Search' />
+                </form>
+            </div>
         );
     }
 }

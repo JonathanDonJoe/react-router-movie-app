@@ -4,7 +4,7 @@ import axios from 'axios'
 import Movie from './Movie'
 // import Search from './Search'
 
-class Home extends Component {
+class SearchPage extends Component {
     constructor() {
         super();
         this.state = {
@@ -14,13 +14,16 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        const nowPlayingUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${config.api_key}`
-        axios.get(nowPlayingUrl)
+        const searchTerm = this.props.match.params.searchTerm;
+        console.log(searchTerm)
+        const searchUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${config.api_key}`
+        axios.get(searchUrl)
             .then( (resp) => {
                 const movieResults = resp.data.results;
                 console.log(movieResults);
                 this.setState({
-                    movieList: movieResults
+                    movieList: movieResults,
+                    searching: searchTerm
                 })
             })
     }
@@ -30,21 +33,22 @@ class Home extends Component {
 
     render() { 
 
-        const movies = this.state.movieList.map( (movie, i) => 
-            <Movie key={i} keys={i} movie={movie} />
-            )
-        
-        // const filteredMovies = this.state.movieList.filter( movie => 
-        //     movie.title.toLowerCase().includes(this.state.searching.toLowerCase())
-        //     );
-        // const movies = filteredMovies.map( (movie, i) => 
+        // const movies = this.state.movieList.map( (movie, i) => 
         //     <Movie key={i} keys={i} movie={movie} />
         //     )
+        
+        const filteredMovies = this.state.movieList.filter( movie => 
+            movie.title.toLowerCase().includes(this.state.searching.toLowerCase())
+            );
+        const movies = filteredMovies.map( (movie, i) => 
+            <Movie key={i} keys={i} movie={movie} />
+            )
         
         return (
             <div>
                 {/* <Search changeFromParent={this.changeSearch}/> */}
                 <div className='col s12'>
+                    <h1>Searching for: {this.state.searching}</h1>
                     {movies}
                 </div>
             </div>
@@ -52,4 +56,4 @@ class Home extends Component {
     }
 }
  
-export default Home;
+export default SearchPage;
