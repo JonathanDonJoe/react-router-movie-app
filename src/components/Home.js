@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import config from '../config'
 import axios from 'axios'
 import Movie from './Movie'
+import Search from './Search'
 
 class Home extends Component {
     constructor() {
         super();
         this.state = {
-            movieList: []
+            movieList: [],
+            searching: ''
         }
     }
 
@@ -23,16 +25,34 @@ class Home extends Component {
             })
     }
 
+    changeSearch = e => {
+        const newVal = e.target.value
+        console.log(newVal);
+        this.setState({
+            searching:newVal
+        })
+    }
+
 
     render() { 
 
-        const movies = this.state.movieList.map( (movie, i) => 
+        // const movies = this.state.movieList.map( (movie, i) => 
+        //     <Movie key={i} keys={i} movie={movie} />
+        //     )
+        
+        const filteredMovies = this.state.movieList.filter( movie => 
+            movie.title.toLowerCase().includes(this.state.searching.toLowerCase())
+            );
+        const movies = filteredMovies.map( (movie, i) => 
             <Movie key={i} keys={i} movie={movie} />
             )
-
+        
         return (
-            <div className='col s12'>
-                {movies}
+            <div>
+                <Search changeFromParent={this.changeSearch}/>
+                <div className='col s12'>
+                    {movies}
+                </div>
             </div>
         );
     }
