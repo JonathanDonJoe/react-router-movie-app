@@ -28,21 +28,31 @@ class SearchPage extends Component {
             })
     }
 
-    
+    // componentDidUpdate(prevProps) {
+    //     console.log(this.props);
+    //     console.log(prevProps);
+    //     console.log(prevProps.searchTerm === this.props.searchTerm);
+    //     if(!(this.props.searchTerm === prevProps.searchTerm))
+    //     {
+    //         console.log('running')
+    //       this.render();
+    //     }
+    //   } 
 
 
     render() { 
-
-        // const movies = this.state.movieList.map( (movie, i) => 
-        //     <Movie key={i} keys={i} movie={movie} />
-        //     )
-        
-        const filteredMovies = this.state.movieList.filter( movie => 
-            movie.title.toLowerCase().includes(this.state.searching.toLowerCase())
-            );
-        const movies = filteredMovies.map( (movie, i) => 
+        console.log('rendering')
+        console.log(this.state.movieList)
+        const movies = this.state.movieList.map( (movie, i) => 
             <Movie key={i} keys={i} movie={movie} />
             )
+        
+        // const filteredMovies = this.state.movieList.filter( movie => 
+        //     movie.title.toLowerCase().includes(this.state.searching.toLowerCase())
+        //     );
+        // const movies = filteredMovies.map( (movie, i) => 
+        //     <Movie key={i} keys={i} movie={movie} />
+        //     )
         
         return (
             <div>

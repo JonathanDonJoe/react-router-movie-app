@@ -41,5 +41,30 @@
 }
 
 .nav-bar {
-  background-color: salmon;
+  background-color: lightblue;
+  border: black 1px solid;
+  padding: 0 50px;
+  border-radius:20px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 5px gray;
+}
+.movie-poster {
+  border-radius: 30px;
+}
+
+.search-input {
+  color: red;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;
 }

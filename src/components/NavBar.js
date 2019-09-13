@@ -17,28 +17,26 @@ class NavBar extends Component {
     }
 
     changeSearch = e => {
-        e.preventDefault()
-        const newVal = e.target.value
-        // console.log(newVal);
         this.setState({
-            searchTerm:newVal
+            searchTerm:e.target.value
         })
-
+        this.props.changeFromParent(e)
     }
     
-    SearchItem = e => {
+    searchItem = e => {
         e.preventDefault()
         const searchUrl = `/search/${this.state.searchTerm}`
+        console.log(this.props)
         this.props.history.push(searchUrl);
     }
 
     render() {
-        // console.log(this.state.searchTerm)
+        console.log(this.state.searchTerm)
         return(
-            <div className='container nav-bar'>
-                <h3>Nav Bar</h3>
+            <div className='container nav-bar nav-wrapper'>
+                {/* <h3>Nav Bar</h3> */}
                 <Link to='/'> Home</Link>
-                <Search searchFromParent={this.SearchItem} changeFromParent={this.changeSearch} />
+                <Search searchFromParent={this.searchItem} changeFromParent={this.changeSearch} />
             </div>
         )
     }

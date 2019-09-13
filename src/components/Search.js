@@ -15,7 +15,7 @@ class Search extends Component {
         return ( 
             <div>
                 <form onSubmit={this.props.searchFromParent}>
-                    <input type='text' onChange={this.props.changeFromParent} value={this.props.searching} placeholder='Search' />
+                    <input type='text' onChange={this.props.changeFromParent} placeholder='Search' className='search-input'/>
                 </form>
             </div>
         );

@@ -7,7 +7,7 @@ function Movie(props) {
     return (
         <div className='col s6 movie-poster-container'>
             <Link to={`/movie/${props.movie.id}`} >
-                <img src={`${imagePath}${props.movie.poster_path}`} alt={props.keys}></img>
+                <img src={`${imagePath}${props.movie.poster_path}`} alt={props.keys} className='movie-poster'></img>
                 <div className='movie-text'>
                     <h5 className='movie-title'>
                         {props.movie.title}
