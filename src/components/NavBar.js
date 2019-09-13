@@ -12,7 +12,8 @@ class NavBar extends Component {
     constructor() {
         super();
         this.state = {
-            searchTerm: ''
+            searchTerm: '',
+            movieList: {}
         }
     }
 
@@ -27,6 +28,10 @@ class NavBar extends Component {
         e.preventDefault()
         const searchUrl = `/search/${this.state.searchTerm}`
         console.log(this.props)
+        console.log(this.state)
+
+        this.props.searchFromApp()
+
         this.props.history.push(searchUrl);
     }
 
