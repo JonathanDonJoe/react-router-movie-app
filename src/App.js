@@ -20,9 +20,9 @@ class App extends Component {
   changeSearch = e => {
     this.setState({
         searchTerm:e.target.value
-    }, () => {
-      console.log(this.state)
-    })
+    }
+    // , () => {console.log(this.state)}
+    )
   }
  
 
@@ -30,11 +30,13 @@ class App extends Component {
     const searchQuery = `https://api.themoviedb.org/3/search/movie?api_key=${config.api_key}&query=${this.state.searchTerm}`
     axios.get(searchQuery)
         .then( (resp) => {
-            const movieResults = resp.data.results;
-            console.log(movieResults);
-            this.setState({
-                movieResults: movieResults
-            }, () => console.log(this.state))
+          const movieResults = resp.data.results;
+          // console.log(movieResults);
+          this.setState({
+            movieResults: movieResults
+          }
+            // , () => console.log(this.state)
+          )
         })
 
 }

@@ -13,7 +13,7 @@ function Movie(props) {
                         {props.movie.title}
                     </h5>
                 </div>
-                </Link>
+            </Link>
         </div>
     )
 }
