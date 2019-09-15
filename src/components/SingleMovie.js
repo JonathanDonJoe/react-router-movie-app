@@ -28,13 +28,34 @@ class SingleMovie extends Component {
         if (this.state.movieData.id === undefined) {
             return (<Spinner />)
         }
+        console.log(this.state.movieData)
 
+        let genreList = [];
+        this.state.movieData.genres.forEach(genre => genreList.push(genre.name));
+
+        let tagline = ''
+        if (this.state.movieData.tagline) {
+            tagline = `"${this.state.movieData.tagline}"`;
+        }
+
+        
         return (
-            <div className='container'>
+            <div className='container single-movie-container'>
                 <h1>{this.state.movieData.title}</h1>
+                <h5>{tagline}</h5>
                 <img src={`${imagePath}${this.state.movieData.poster_path}`} alt={this.state.movieData.id}></img>
                 <br/>
-                <img src={`${imagePath}${this.state.movieData.production_companies[0].logo_path}`} alt={this.state.movieData.id}></img>
+                <img className='production-company-logo' src={`${imagePath}${this.state.movieData.production_companies[0].logo_path}`} alt={this.state.movieData.id}></img>
+                <p>
+                    <strong>Runtime: </strong>{this.state.movieData.runtime} Minutes 
+                    <br/>
+                    <strong>Genre: </strong>{genreList.join(', ')} 
+                    <br/>
+                    <strong>Release Date: </strong>{this.state.movieData.release_date}
+                    <br/>
+                    <strong>Overview: </strong>{this.state.movieData.overview}
+                </p>
+                <br/>
             </div>
         )
     }
